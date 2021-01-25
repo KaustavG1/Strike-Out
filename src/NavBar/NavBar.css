@@ -1,0 +1,50 @@
+.nav-bar {
+  background-color: #9c27b0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 8vh;
+}
+
+.header {
+  color: #f3ebf6;
+  text-transform: uppercase;
+}
+
+.list {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  width: 20%;
+}
+
+.list a {
+  color: #f3ebf6;
+  text-decoration: none;
+}
+
+.burger {
+}
+
+.burger div {
+  width: 25px;
+  height: 1px;
+  background-color: #f3ebf6;
+  margin: 5px;
+}
+
+@media screen and (max-width: 1024px) {
+}
+
+@media screen and (max-width: 1024px) {
+  .list {
+    position: absolute;
+    right: 0px;
+    height: 92vh;
+    top: 8vh;
+    background-color: #9c27b0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}

@@ -1,0 +1,14 @@
+.catagories {
+  display: flex;
+  justify-content: space-around;
+}
+
+.footer-elements {
+  text-align: center;
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  background-color: #9c27b0;
+}

@@ -16,6 +16,7 @@ class AddItem extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
+        console.log({ ...this.state, id: uuidv4() });
         this.props.addItems({ ...this.state, id: uuidv4() });
         this.setState({ todoinp: "" });
     }
