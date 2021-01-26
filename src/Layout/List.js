@@ -7,6 +7,13 @@ class List extends Component {
         super(props);
         this.state = { listId: this.props.heading };
         this.updateText = this.updateText.bind(this);
+        this.moveText = this.moveText.bind(this);
+    }
+
+    // Move the text value of item
+    moveText(id, val) {
+        // TODO: Implement the displacement
+        this.props.itemModFunctions.move(this.state.listId, id, val);
     }
 
     // Update the text value of item
@@ -22,6 +29,7 @@ class List extends Component {
               key={item.id} 
               textVal={item.todoinp} 
               childFunctions={this.props.itemModFunctions} 
+              move={this.moveText}
               update={this.updateText} 
               heading={this.props.heading}/>
         ));

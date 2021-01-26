@@ -16,6 +16,44 @@ class LayoutPage extends Component {
         this.handleSignOut = this.handleSignOut.bind(this);
         this.editItemOutput = this.editItemOutput.bind(this);
         this.deleteItem = this.deleteItem.bind(this);
+        this.moveItemOutput = this.moveItemOutput.bind(this); 
+    }
+
+    // Method to move items
+    moveItemOutput(listId, id, val) {
+        if(listId === 'PENDING') {
+            // If list ID is PENDING then - Done
+            // Remove the item from PENDING list and
+            // Add the item to IN PROGRESS list
+            this.setState(state => ({ pendingItems: state.pendingItems.filter(item => item.id !== id),
+                                      inProgressItems: [...state.inProgressItems, {todoinp: val, id: id}] }));
+        } else {
+            // Else the item belongs to IN PROGRESS list; - Done
+            // Remove the item from IN PROGRESS list and
+            // Add the item to COMPLETED list
+            this.setState(state => ({ inProgressItems: state.inProgressItems.filter(item => item.id !== id),
+                                      completedItems: [...state.completedItems, {todoinp: val, id: id}] }));
+        }
+    }
+
+    // Method to Edit individual Items
+    editItemOutput(listId, id, val) {
+        if (listId === 'PENDING') {
+            this.setState(state => ({ pendingItems: state.pendingItems.map(item => {
+                if(item.id === id) return { ...item, todoinp: val || item.todoinp };
+                return item;
+            }) }));
+        } else if (listId === 'IN PROGRESS') {
+            this.setState(state => ({ inProgressItems: state.inProgressItems.map(item => {
+                if(item.id === id) return { ...item, todoinp: val || item.todoinp };
+                return item;
+            }) }));
+        } else {
+            this.setState(state => ({ completedItems: state.completedItems.map(item => {
+                if(item.id === id) return { ...item, todoinp: val || item.todoinp };
+                return item;
+            }) }));
+        }
     }
 
     // Method to Add new Items but state lifting
@@ -30,36 +68,6 @@ class LayoutPage extends Component {
         element && this.setState(state => ({ pendingItems: [...newpendingITem], inProgressItems: [...state.inProgressItems, element] }));
     }
 
-    // Method to Edit individual Items
-    editItemOutput(listId, id, val) {
-        if (listId === 'PENDING') {
-            const newList = this.state.pendingItems.map(item => {
-                if (item.id === id) {
-                    return { ...item, todoinp: val };
-                }
-                return item;
-            });
-            console.log(newList);
-            this.setState(newList);
-        } else if (listId === 'IN PROGRESS') {
-            const newList = this.state.inProgressItems.map(item => {
-                if (item.id === id) {
-                    return { ...item, todoinp: val };
-                }
-                return item;
-            });
-            this.setState(newList);
-        } else {
-            const newList = this.state.completedItems.map(item => {
-                if (item.id === id) {
-                    return { ...item, todoinp: val };
-                }
-                return item;
-            });
-            this.setState(newList);
-        }
-    }
-
     // Method to Delete individual Items
     deleteItem(id) {
         this.setState(state => (
@@ -69,7 +77,6 @@ class LayoutPage extends Component {
                 completedItems: state.completedItems.filter(element => element.id !== id)
             }
         ));
-        console.log('Delete Triggered');
     }
 
     // Handle Sign Out functionality
@@ -82,15 +89,15 @@ class LayoutPage extends Component {
             <div className="catagories">
                 <List heading="PENDING" 
                       items={this.state.pendingItems} 
-                      itemModFunctions={{ edit: this.editItemOutput, delete: this.deleteItem }} 
+                      itemModFunctions={{ move: this.moveItemOutput, edit: this.editItemOutput, delete: this.deleteItem }} 
                 />
                 <List heading="IN PROGRESS" 
                       items={this.state.inProgressItems} 
-                      itemModFunctions={{ edit: this.editItemOutput, delete: this.deleteItem }} 
+                      itemModFunctions={{ move: this.moveItemOutput, edit: this.editItemOutput, delete: this.deleteItem }} 
                 />
                 <List heading="COMPLETED" 
                       items={this.state.completedItems} 
-                      itemModFunctions={{ edit: this.editItemOutput, delete: this.deleteItem }} 
+                      itemModFunctions={{ move: this.moveItemOutput, edit: this.editItemOutput, delete: this.deleteItem }} 
                 />
             </div>
             <footer className="footer-elements">

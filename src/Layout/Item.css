@@ -24,3 +24,49 @@
 .edit-form {
   text-align: center;
 }
+
+.edit-input {
+  display: inline;
+  /* max-width: 25rem; */
+  color: rgb(38, 50, 56);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1px;
+  background: rgba(189, 183, 183, 0.12);
+  padding: 5px 5px;
+  border-radius: 20px;
+  border: 2px solid rgba(0, 0, 0, 0.02);
+  margin-right: 5px;
+  margin-left: 21px;
+  text-align: center;
+  font-family: "Ubuntu", sans-serif;
+  outline: none;
+}
+
+.edit-input:focus {
+  border: 2px solid rgba(0, 0, 0, 0.18) !important;
+}
+
+.edit-form button {
+  display: inline;
+  box-sizing: border-box;
+  cursor: pointer;
+  border-radius: 5em;
+  color: #fff;
+  background: linear-gradient(to right, rgb(156, 39, 176), #e040fb);
+  border: 0;
+  padding-left: 13px;
+  padding-right: 13px;
+  padding-bottom: 6px;
+  padding-top: 6px;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 13px;
+  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+  outline: none;
+}
+
+.move,
+.edit,
+.delete {
+  cursor: pointer;
+}

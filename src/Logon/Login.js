@@ -24,7 +24,6 @@ class Login extends Component {
     // Handle the form submission
     handleSubmit(event) {
         event.preventDefault();
-        console.log("Submitted");
         // TODO: Handle the submit action
         // Reset Fields
         this.setState(state => ({ ...state, uname: "", pword: "" }));
