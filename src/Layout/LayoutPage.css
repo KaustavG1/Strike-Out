@@ -1,3 +1,7 @@
+.Layout-Page {
+  font-family: "Ubuntu", sans-serif;
+}
+
 .catagories {
   display: flex;
   justify-content: space-around;
@@ -8,7 +12,7 @@
   position: fixed;
   bottom: 0px;
   width: 100%;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  background-color: #9c27b0;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  background-color: #ffffff;
 }

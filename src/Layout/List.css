@@ -1,11 +1,27 @@
 .individual-list {
   box-sizing: border-box;
-  margin: 1.5rem;
-  padding-top: 0.4rem;
+  margin: 24px;
+  padding-top: 6.4px;
   border-radius: 3%;
   background-color: #ffffff;
   height: 500px;
   width: 400px;
   box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
   text-align: center;
+  overflow: auto;
+}
+
+::-webkit-scrollbar {
+  height: 20rem;
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(173, 162, 162);
+  border-radius: 10px;
 }

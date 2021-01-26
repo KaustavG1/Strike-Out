@@ -1,0 +1,37 @@
+.add-input {
+  max-width: 25rem;
+  color: rgb(38, 50, 56);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1px;
+  background: rgba(189, 183, 183, 0.12);
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: 2px solid rgba(0, 0, 0, 0.02);
+  margin: 10px;
+  text-align: center;
+  font-family: "Ubuntu", sans-serif;
+  outline: none;
+}
+
+.add-input:focus {
+  border: 2px solid rgba(0, 0, 0, 0.18) !important;
+}
+
+.add-button {
+  display: inline;
+  box-sizing: border-box;
+  cursor: pointer;
+  border-radius: 5em;
+  color: #fff;
+  background: linear-gradient(to right, rgb(156, 39, 176), #e040fb);
+  border: 0;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 14px;
+  padding-top: 14px;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 13px;
+  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+  outline: none;
+}

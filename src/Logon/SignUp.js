@@ -14,11 +14,13 @@ class SignUp extends Component {
         this.handleExistingUser = this.handleExistingUser.bind(this);
     }
 
+    // Update the value in state
     handleChange(event) {
         event.persist();
         this.setState({ [event.target.name]: event.target.value });
     }
 
+    // Handle the form submission
     handleSubmit(event) {
         event.preventDefault();
         console.log("Submitted");
@@ -27,6 +29,7 @@ class SignUp extends Component {
         this.setState(state => ({ ...state, uname: "", pword: "", email: "" }));
     }
 
+    // Open SignUP Page
     handleExistingUser(event) {
         this.props.openPage();
     }
@@ -36,11 +39,11 @@ class SignUp extends Component {
             <h1 className="sign">Join Us Today</h1>
             <form onSubmit={this.handleSubmit} className="form1">
                 {/* <label htmlFor="username">Username</label><br /> */}
-                <input id="username" name="uname" type="text" onChange={this.handleChange} value={this.state.uname} placeholder="Username" className="input-fields"/><br/> 
+                <input id="username" name="uname" type="text" onChange={this.handleChange} value={this.state.uname} placeholder="Username" className="input-fields" /><br />
                 {/* <label htmlFor="email">Email</label><br /> */}
-                <input id="email" name="email" type="email" onChange={this.handleChange} value={this.state.email} placeholder="Email" className="input-fields"/><br/>    
+                <input id="email" name="email" type="email" onChange={this.handleChange} value={this.state.email} placeholder="Email" className="input-fields" /><br />
                 {/* <label htmlFor="password">Password</label><br /> */}
-                <input id="password" name="pword" type="password" onChange={this.handleChange} value={this.state.pword} placeholder="Password" className="input-fields"/><br />
+                <input id="password" name="pword" type="password" onChange={this.handleChange} value={this.state.pword} placeholder="Password" className="input-fields" /><br />
                 <button className="submit">Submit</button>
             </form>
             <p onClick={this.handleExistingUser} className="change-page">Already a User? Log In</p>
