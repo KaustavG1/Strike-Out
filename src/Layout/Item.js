@@ -5,7 +5,7 @@ import { Popup } from 'semantic-ui-react';
 class Item extends Component {
     constructor(props) {
         super(props);
-        this.state = { editinp: this.props.textVal, isEditActive: false }
+        this.state = { editinp: this.props.textVal, isEditActive: false, strike: '' }
         this.handleMove = this.handleMove.bind(this);
         this.handleEdit = this.handleEdit.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
@@ -17,6 +17,7 @@ class Item extends Component {
     handleMove(event) {        
         if(this.props.heading === "COMPLETED") {
             // const st = 'line-through'; 
+            this.setState({ strike: 'line-through' });
         } else {
             this.props.move(this.props.id, this.props.editinp || this.props.textVal);
         }
@@ -55,7 +56,7 @@ class Item extends Component {
         }
         if (!this.state.isEditActive) {
             return (<div className="Item">
-                <span className={"item-text"} style={{textDecoration: ''}}>{this.props.textVal}</span>
+                <span className={"item-text"} style={{textDecoration: `${this.state.strike}`}}>{this.props.textVal}</span>
                 <div className="icons">
                     {moveIcon()}
                     <Popup content='Edit' trigger={<i className="edit fas fa-pen" onClick={this.handleEdit}></i>} />

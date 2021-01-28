@@ -7,7 +7,8 @@ class SignUp extends Component {
         this.state = {
             uname: "",
             pword: "",
-            email: ""
+            email: "",
+            existingUser: false
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,15 +23,20 @@ class SignUp extends Component {
 
     // Save Sign Up data
     signUpUser() {
-        const userData = JSON.stringify(this.state);
-        
-        if (localStorage.getItem(this.state.uname) === null) {
+        const userData = JSON.stringify({ uname: this.state.uname, pword: this.state.pword, email: this.state.email });
+        // Get current user entries
+        const currentUserData = JSON.parse(localStorage.getItem(this.state.uname))
+
+        // Check for existing user
+        if (currentUserData === null) {
+            // Add new entry in local storage
             localStorage.setItem(this.state.uname, userData);
             // Navigate to dashboard
-            this.props.loginFunction();
+            this.props.loginFunction();  
         } else {
             // Notify existing user
-        }     
+            this.setState(state => ({ ...state, existingUser: !state.existingUser }));                
+        } 
     }
 
     // Handle the form submission
@@ -60,6 +66,7 @@ class SignUp extends Component {
                 <button className="submit">Submit</button>
             </form>
             <p onClick={this.handleExistingUser} className="change-page">Already a User? Log In</p>
+            {this.state.existingUser && <p onClick={this.handleExistingUser} className="red-flag">You are an existing user, try logging in</p>}
         </div>);
     }
 }

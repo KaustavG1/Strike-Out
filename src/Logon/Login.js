@@ -6,7 +6,8 @@ class Login extends Component {
         super(props);
         this.state = {
             uname: "",
-            pword: ""
+            pword: "",
+            incorretCreds: false
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -28,6 +29,7 @@ class Login extends Component {
             this.props.loginFunction();
         } else {
             // Notify username and password does not match
+            this.setState(state => ({ ...state, incorretCreds: !state.incorretCreds }));
         }
     }
 
@@ -63,6 +65,7 @@ class Login extends Component {
             </form>
             <p onClick={this.handleNewUser} className="change-page">New User? Sign Up Here</p>
             <p onClick={this.handleForgotPassword} className="change-page">Forgot Password? Reset Now</p>
+            {this.state.incorretCreds && <p onClick={this.handleForgotPassword} className="red-flag">Invalid Username/Passowrd</p>}
         </div>);
     }
 }
