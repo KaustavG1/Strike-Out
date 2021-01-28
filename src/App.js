@@ -5,7 +5,7 @@ import LayoutPage from './Layout/LayoutPage';
 import NavBar from './NavBar/NavBar';
 
 function App() {
-  const [isLoggedIn, setLoggedIn] = useState(true);
+  const [isLoggedIn, setLoggedIn] = useState(false);
 
   function setActivePage() {
     setLoggedIn(!isLoggedIn);
@@ -13,9 +13,9 @@ function App() {
 
   return (
     <div className="App">
-      {!isLoggedIn && false && <LoginPage loginFunction={setActivePage}/>}
-      {isLoggedIn && <NavBar />}
-      {isLoggedIn && <LayoutPage signoutFunction={setActivePage}/>}
+      {!isLoggedIn && <LoginPage loginFunction={setActivePage} />}
+      {isLoggedIn && <NavBar signoutFunction={setActivePage} />}
+      {isLoggedIn && <LayoutPage />}
     </div>
   );
 }

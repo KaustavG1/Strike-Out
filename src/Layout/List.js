@@ -34,7 +34,7 @@ class List extends Component {
               heading={this.props.heading}/>
         ));
         return (<div className="individual-list">
-            <h4>{this.props.heading}</h4>
+            <h4 className="list-heading">{this.props.heading}</h4>
             {renderedItems()}
         </div>);
     }

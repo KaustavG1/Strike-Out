@@ -21,13 +21,25 @@ class Login extends Component {
         this.setState({ [event.target.name]: event.target.value });
     }
 
+    loginUser() {
+        const userData = localStorage.getItem(this.state.uname);
+        const userDataObj = JSON.parse(userData);
+        if(userDataObj.uname === this.state.uname && userDataObj.pword === this.state.pword) {
+            this.props.loginFunction();
+        } else {
+            // Notify username and password does not match
+        }
+    }
+
     // Handle the form submission
     handleSubmit(event) {
         event.preventDefault();
+        
         // TODO: Handle the submit action
+        this.loginUser();
+        
         // Reset Fields
         this.setState(state => ({ ...state, uname: "", pword: "" }));
-        this.props.loginFunction();
     }
 
     // Open new Users
@@ -45,10 +57,8 @@ class Login extends Component {
         return (<div className="card">
             <h1 className="sign">Welcome Back!</h1>
             <form onSubmit={this.handleSubmit} className="form1">
-                {/* <label htmlFor="username">Username</label><br /> */}
-                <input id="username" name="uname" type="text" onChange={this.handleChange} value={this.state.uname} placeholder="Username" required className="input-fields" /><br />
-                {/* <label htmlFor="password">Password</label><br /> */}
-                <input id="password" name="pword" type="password" onChange={this.handleChange} value={this.state.pword} placeholder="Password" required className="input-fields" /> <br />
+                <input name="uname" type="text" onChange={this.handleChange} value={this.state.uname} placeholder="Username" required className="input-fields" /><br />
+                <input name="pword" type="password" onChange={this.handleChange} value={this.state.pword} placeholder="Password" required className="input-fields" /> <br />
                 <button className="submit">Submit</button>
             </form>
             <p onClick={this.handleNewUser} className="change-page">New User? Sign Up Here</p>

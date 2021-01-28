@@ -12,8 +12,6 @@ class LayoutPage extends Component {
             completedItems: [{ todoinp: 'Completed Task', id: 'ct' }, { todoinp: 'Completed Task2', id: 'ct2' }]
         };
         this.addItems = this.addItems.bind(this);
-        this.handleMove = this.handleMove.bind(this);
-        this.handleSignOut = this.handleSignOut.bind(this);
         this.editItemOutput = this.editItemOutput.bind(this);
         this.deleteItem = this.deleteItem.bind(this);
         this.moveItemOutput = this.moveItemOutput.bind(this); 
@@ -61,13 +59,6 @@ class LayoutPage extends Component {
         this.setState(state => ({ pendingItems: [...state.pendingItems, listItem] }));
     }
 
-    // Method to Move Items but state lifting
-    handleMove() {
-        const element = this.state.pendingItems[0];
-        const [, ...newpendingITem] = this.state.pendingItems;
-        element && this.setState(state => ({ pendingItems: [...newpendingITem], inProgressItems: [...state.inProgressItems, element] }));
-    }
-
     // Method to Delete individual Items
     deleteItem(id) {
         this.setState(state => (
@@ -79,10 +70,7 @@ class LayoutPage extends Component {
         ));
     }
 
-    // Handle Sign Out functionality
-    handleSignOut() {
-        this.props.signoutFunction();
-    }
+    
 
     render() {
         return (<div className="Layout-Page">
@@ -102,9 +90,6 @@ class LayoutPage extends Component {
             </div>
             <footer className="footer-elements">
                 <AddItem addItems={this.addItems} />
-                {/* Debug buttons - remove from final version  */}
-                {<button onClick={this.handleMove}>Move To In Progress</button>}
-                {<button onClick={this.handleSignOut}>Sign Out</button>}
             </footer>
         </div>);
     }

@@ -38,8 +38,8 @@ class LoginPage extends Component {
     render() {
         return (<div className="login-page">
             {(this.state.activePage === "Login") && <Login openPage={{ SignUp: this.openSignUp, ForgotPassword: this.openForgot }} 
-                                                           loginFunction={this.props.loginFunction}/>}
-            {(this.state.activePage === "SignUp") && <SignUp openPage={this.openLogin} />}
+                                                           loginFunction={this.props.loginFunction} />}
+            {(this.state.activePage === "SignUp") && <SignUp openPage={this.openLogin} loginFunction={this.props.loginFunction} />}
             {(this.state.activePage === "Forgot") && <ForgotPassword openPage={this.goBackToLogin} />}
         </div>);
     }

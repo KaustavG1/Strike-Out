@@ -20,10 +20,24 @@ class SignUp extends Component {
         this.setState({ [event.target.name]: event.target.value });
     }
 
+    // Save Sign Up data
+    signUpUser() {
+        const userData = JSON.stringify(this.state);
+        
+        if (localStorage.getItem(this.state.uname) === null) {
+            localStorage.setItem(this.state.uname, userData);
+            // Navigate to dashboard
+            this.props.loginFunction();
+        } else {
+            // Notify existing user
+        }     
+    }
+
     // Handle the form submission
     handleSubmit(event) {
         event.preventDefault();
         // TODO: Handle the submit action
+        this.signUpUser();
         // Reset Fields
         this.setState(state => ({ ...state, uname: "", pword: "", email: "" }));
     }

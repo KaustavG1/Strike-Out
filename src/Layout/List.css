@@ -11,6 +11,10 @@
   overflow: auto;
 }
 
+.list-heading {
+  padding: 16px;
+}
+
 ::-webkit-scrollbar {
   height: 20rem;
   width: 12px;
